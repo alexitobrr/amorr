@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>cartita para la mejorl</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body onclick="playAudio()"> 
+<div class="valentines-day">
+  <div class="envelope"></div>
+  <div class="heart"></div>
+  <div class="text">tu cumple  <br>es un <br>dia!<br>muy especial! </div>
+  <div class="front"></div>
+</div>
+
+<div id="card">
+  <div class="side one">
+    <i class="fas fa-heart"></i>
+  </div>
+  <div class="side two">
+   
+    <p>Nuestra Querida Tia,</p>
+<p>Bueno madrina  le deseo un feliz cumpleaños espero q la aya pasado bien una año más con nosotros y espero de todo corazón q todo lo le salga BN y gracias x todo el apoyo q me da el aprecio q me tiene  
+  De parte de su sobrino fav  Jordan ,Piero y Alejandra .</p>
+
+     <h2>Tu ahijado</h2>
+  </div>
+</div>
+
+<div class='made-with-love'>
+  HECHO 
+   <span>♥</span>
+  jordan
+
+
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src="./script.js"></script>
+
+<audio id="audio1" autoplay>
+  <source src="audio/musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  function playAudio() {
+    var x = document.getElementById("audio1");
+    x.play();
+  }
+</script>
+</body>
+</html>
