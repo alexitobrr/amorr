@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mi Tonazo Cumpleañero 🎉</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&display=swap');
+
+body{
+    margin:0;
+    font-family:'Montserrat',sans-serif;
+    background: radial-gradient(circle at top, #ff0080, #1a001f);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    color:white;
+}
+
+/* Luces */
+.luces{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.2),transparent);
+    animation:luces 3s linear infinite;
+    z-index:1;
+}
+@keyframes luces{
+    from{transform:translateX(-100%);}
+    to{transform:translateX(100%);}
+}
+
+/* Carta */
+.carta{
+    position:relative;
+    z-index:2;
+    width:90%;
+    max-width:650px;
+    background:rgba(0,0,0,0.75);
+    border-radius:25px;
+    padding:30px;
+    box-shadow:0 0 50px #ff00cc;
+    text-align:center;
+}
+
+/* Imagen única */
+.imagen-central{
+    width:100%;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 0 20px rgba(255,255,255,0.3);
+}
+
+/* Texto */
+.titulo{
+    font-size:2.4em;
+    font-weight:800;
+    color:#ffde59;
+    text-shadow:0 0 15px #ff0080;
+    animation:latido 1.5s infinite;
+}
+@keyframes latido{
+    50%{transform:scale(1.08);}
+}
+
+.sub{
+    font-size:1.2em;
+    color:#00f7ff;
+}
+
+.edad{
+    font-size:4em;
+    font-weight:800;
+    color:#ff0080;
+    margin:15px 0;
+}
+
+.detalles{
+    background:rgba(255,255,255,0.1);
+    border-radius:15px;
+    padding:20px;
+    margin-top:20px;
+    line-height:1.8;
+}
+
+.detalles span{
+    color:#ffde59;
+    font-weight:600;
+}
+
+/* Cuenta regresiva */
+.contador{
+    margin-top:25px;
+    padding:15px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#ff0080,#7928ca);
+}
+
+.tiempo{
+    display:flex;
+    justify-content:space-between;
+    margin-top:10px;
+}
+
+.bloque{
+    width:23%;
+    background:rgba(0,0,0,0.4);
+    border-radius:10px;
+    padding:10px;
+}
+
+.bloque h2{
+    margin:0;
+    color:#ffde59;
+}
+
+/* ADORNOS CAYENDO */
+.adorno{
+    position:fixed;
+    top:-50px;
+    font-size:26px;
+    animation:caer linear forwards;
+    z-index:0;
+}
+
+@keyframes caer{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="luces"></div>
+
+<div class="carta">
+
+    <!-- TU IMAGEN, SIN CAMBIOS -->
+    <img 
+      src="https://imgmedia.libero.pe/640x352/libero/original/2023/09/25/6511b054cb58bf04760cb633.webp"
+      class="imagen-central"
+      alt="Personajes invitados">
+
+    <div class="titulo">🎉 Mi Tonazo Cumpleañero 🎉</div>
+    <div class="sub">You’re invited!</div>
+
+    <div class="edad">24 años</div>
+
+    <div class="detalles">
+        📅 <span>Sábado 24 de Enero</span><br>
+        ⏰ <span>8:00 PM</span><br>
+        📍 <span>En la jato del cumpleañero</span><br>
+        🎈 <span>Lleva globos</span>
+    </div>
+
+    <div class="contador">
+        ⏳ Cuenta regresiva
+        <div class="tiempo">
+            <div class="bloque"><h2 id="d">0</h2>Días</div>
+            <div class="bloque"><h2 id="h">0</h2>Horas</div>
+            <div class="bloque"><h2 id="m">0</h2>Min</div>
+            <div class="bloque"><h2 id="s">0</h2>Seg</div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTADOR -->
+<script>
+const evento = new Date(new Date().getFullYear(),0,24,20,0,0).getTime();
+setInterval(()=>{
+    const diff = evento - Date.now();
+    d.innerText = Math.max(0,Math.floor(diff/86400000));
+    h.innerText = Math.max(0,Math.floor(diff/3600000)%24);
+    m.innerText = Math.max(0,Math.floor(diff/60000)%60);
+    s.innerText = Math.max(0,Math.floor(diff/1000)%60);
+},1000);
+</script>
+
+<!-- MUSICA (IGUAL QUE TU CODIGO) -->
+<div style="display:none">
+<iframe 
+  src="https://www.youtube.com/embed/z5tnu1Wq2e8?autoplay=1&loop=1&playlist=z5tnu1Wq2e8"
+  allow="autoplay">
+</iframe>
+</div>
+
+<!-- ADORNOS -->
+<script>
+const adornos = ["🎉","🎈"]; // 2 adornos como pediste
+
+setInterval(()=>{
+    const a = document.createElement("div");
+    a.className = "adorno";
+    a.innerText = adornos[Math.floor(Math.random()*adornos.length)];
+    a.style.left = Math.random()*100 + "vw";
+    a.style.animationDuration = (3 + Math.random()*4) + "s";
+    document.body.appendChild(a);
+    setTimeout(()=>a.remove(),7000);
+},300);
+</script>
+
+</body>
+</html>
